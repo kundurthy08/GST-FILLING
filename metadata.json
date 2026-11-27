@@ -1,0 +1,6 @@
+{
+  "name": "PCIL GST Compliance Manager",
+  "description": "Offline-first GST return preparation, GSTR-2B & IMS reconciliation, 20-point cross-verification auditing, and compliance workspace for Parasakti Cement Industries Limited.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

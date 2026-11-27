@@ -1,0 +1,1284 @@
+# MASTER PROMPT – PCIL GST COMPLIANCE MANAGER V2.0
+
+## 1. Role and responsibility
+
+Act as a senior enterprise software architect, Python developer, database architect, UI/UX designer, Indian GST compliance specialist, financial auditing system developer, Windows deployment engineer and software quality assurance specialist.
+
+Develop a complete, production-oriented, standalone desktop application named:
+
+**PCIL GST COMPLIANCE MANAGER**
+
+**Company:** Parasakti Cement Industries Limited
+
+**Industry:** Cement Manufacturing
+
+Follow the attached PCIL GST Master Blueprint V2.0 as the primary functional and technical specification.
+
+The objective is to develop a permanent, reusable, offline GST return preparation, reconciliation, verification and auditing application supporting multiple states, GSTINs, factories, branches and depots.
+
+Do not develop merely a website, static dashboard, Excel comparison utility or visual prototype. Develop actual working software with a permanent database, functional processing engines, government-format exports and a standalone Windows installer.
+
+## 2. Mandatory software requirements
+
+The application must:
+
+- Work completely offline for its core processing.
+- Support Windows 10 and Windows 11, 64-bit, subject to tested compatibility.
+- Be installable using a simple Windows EXE installer.
+- Include all required Python runtime components and dependencies.
+- Include the SQLite database engine.
+- Automatically create and initialize its database.
+- Require no separate Python installation by the end user.
+- Require no separate SQLite installation.
+- Require no programming knowledge to operate.
+- Support multiple GSTINs and financial years.
+- Support large manufacturing-company transaction volumes.
+- Preserve all historical records.
+- Generate government-prescribed GST return formats.
+- Generate validated JSON files wherever officially supported.
+- Provide complete invoice-level auditing.
+- Maintain detailed error and discrepancy reports.
+- Provide backup, restoration and computer migration facilities.
+- Operate without mandatory software subscriptions or cloud hosting.
+- Provide complete developer source code.
+
+Internet connectivity should only be necessary for GST portal operations, obtaining official government templates and importing authorized statutory updates.
+
+## 3. Technology stack
+
+Use the following technology architecture:
+
+| Component | Technology |
+|---|---|
+| Operating system | Windows |
+| Programming language | Python |
+| Desktop interface | PySide6 / Qt |
+| Permanent database | SQLite |
+| Database integration | Python sqlite3 or SQLAlchemy |
+| Excel processing | Pandas and Openpyxl |
+| Legacy XLS processing | Compatible XLS reader |
+| Large-volume processing | DuckDB or Polars, where necessary |
+| Financial calculations | Decimal or integer paise |
+| Dashboard | Qt-compatible charts or bundled offline Plotly |
+| PDF reporting | ReportLab |
+| JSON validation | JSON Schema |
+| Password security | Argon2 or equivalent |
+| Application packaging | PyInstaller |
+| Windows installer | Inno Setup |
+| Automated testing | Pytest |
+| Application updates | Authenticated offline update packages |
+
+Select mutually compatible and tested dependency versions. Maintain a pinned requirements file and comply with all applicable third-party distribution licences.
+
+### Official development resources
+
+- Python: https://www.python.org/downloads/
+- SQLite: https://www.sqlite.org/
+- SQLite documentation: https://www.sqlite.org/docs.html
+- PySide6: https://doc.qt.io/qtforpython-6/
+- PyInstaller: https://pyinstaller.org/
+- Inno Setup: https://jrsoftware.org/isinfo.php
+- Pandas: https://pandas.pydata.org/
+- Openpyxl: https://openpyxl.readthedocs.io/
+- DuckDB: https://duckdb.org/
+- Plotly: https://plotly.com/python/
+- GST Portal: https://www.gst.gov.in/
+- GST Offline Utilities: https://www.gst.gov.in/download/returns
+- CBIC GST: https://cbic-gst.gov.in/
+
+## 4. Standalone installation requirements
+
+Generate a Windows installation package named:
+
+**PCIL_GST_Setup.exe**
+
+The installer must automatically:
+
+1. Install the complete application.
+2. Include the Python runtime.
+3. Include the SQLite engine.
+4. Include all necessary libraries.
+5. Create application directories.
+6. Initialize the permanent database.
+7. Install approved government templates.
+8. Create the desktop shortcut.
+9. Create the Start Menu shortcut.
+10. Provide an uninstall facility.
+11. Preserve existing user data during upgrades.
+12. Provide a first-time company configuration wizard.
+
+Store executable files separately from writable company data. Do not store the working database in a protected Program Files directory.
+
+Support per-user installation without administrator privileges wherever practical.
+
+Provide a second distribution package:
+
+**PCIL_GST_Portable.zip**
+
+The portable version must support extraction and direct execution without a standard installation procedure, subject to company security policies.
+
+Build and test the actual Windows installer on a compatible Windows build environment. Do not claim that installation testing has passed unless it has actually been performed.
+
+## 5. Professional desktop interface
+
+Design a visually attractive enterprise financial software interface.
+
+Use:
+
+- Professional navy blue, white and subtle grey colour scheme.
+- Modern dashboard cards.
+- Clean typography.
+- Interactive charts.
+- Expandable navigation sidebar.
+- GSTIN and financial-year selectors.
+- Month-wise return selection.
+- Searchable and filterable transaction tables.
+- Colour-coded validation results.
+- Drill-down reports.
+- Light and dark modes.
+- Progress indicators during large file processing.
+- Responsive resizing for different desktop screen resolutions.
+- Clear error messages.
+- Indian currency formatting.
+
+The application must remain responsive during processing. Use background worker threads or appropriate task execution mechanisms without allowing unsafe concurrent database writes.
+
+### Main navigation menu
+
+1. Dashboard
+2. Company Master
+3. GSTIN Master
+4. Branch Master
+5. Customer Master
+6. Supplier Master
+7. Product and HSN Master
+8. GST Rate Master
+9. Import Accounting Registers
+10. Sales Verification
+11. Discount Verification
+12. Purchase Verification
+13. E-Invoice Reconciliation
+14. GSTR-1 Preparation
+15. GSTR-1A Amendments
+16. GSTR-2B Reconciliation
+17. IMS Review
+18. ITC Verification
+19. Reverse Charge Verification
+20. Stock Transfer Verification
+21. GSTR-3B Preparation
+22. GST Return Comparison
+23. Audit and Exception Reports
+24. Government Format Export
+25. Historical Returns
+26. Management Reports
+27. User Management
+28. Backup and Restore
+29. Government Updates
+30. Settings and Help
+
+All buttons and navigation items must perform actual functions. Do not include nonfunctional demonstration buttons in the production release.
+
+## 6. Main dashboard
+
+Create an interactive GST compliance dashboard displaying:
+
+- Total taxable sales.
+- Total purchase value.
+- IGST liability.
+- CGST liability.
+- SGST liability.
+- Cess liability.
+- Total output GST.
+- ITC available.
+- Eligible ITC.
+- Ineligible ITC.
+- ITC reversals.
+- ITC reclaims.
+- Reverse charge liability.
+- Estimated cash tax payable.
+- Total sales invoices.
+- Total purchase invoices.
+- Matched invoices.
+- Unmatched invoices.
+- Duplicate invoices.
+- Critical audit exceptions.
+- GSTIN-wise filing status.
+- Monthly GST trends.
+- Pending approvals.
+- Previous-period differences.
+
+Allow filtering by company, GSTIN, state, factory, branch, depot, financial year, return period and verification status.
+
+Clicking a dashboard figure must open the corresponding transaction-level report.
+
+## 7. Multiple GSTIN and state management
+
+The software must support an unlimited configurable number of GST registrations, subject to system capacity.
+
+Allow separate GSTIN registrations for each state and, where applicable, multiple registrations within the same state.
+
+Maintain independent:
+
+- Sales transactions.
+- Purchase transactions.
+- GST liabilities.
+- ITC claims.
+- Credit and cash ledger details.
+- Return preparation.
+- Historical records.
+- Filing status.
+- Audit exceptions.
+
+Never combine transactions belonging to different GSTINs into a single statutory return.
+
+Provide consolidated management reports separately.
+
+## 8. Accounting data import engine
+
+Accept the company's existing accounting exports without requiring manual rearrangement every month.
+
+Supported file formats:
+
+- XLS
+- XLSX
+- CSV
+- JSON
+- Official GST portal files
+
+Primary input files:
+
+1. Sales register.
+2. Discount register.
+3. Purchase register.
+4. GST credit and debit note register.
+5. Commercial credit note register.
+6. Stock transfer register.
+7. E-invoice data.
+8. Official GSTR-2B.
+9. GSTR-1 draft or filed return.
+10. GSTR-1A.
+11. GSTR-3B system-generated summary.
+12. Reverse charge register.
+13. ITC reversal and reclaim records.
+14. Electronic credit ledger.
+15. Electronic cash ledger.
+16. Electronic liability register.
+17. Other supporting adjustments.
+
+Provide a configurable column-mapping wizard.
+
+Automatically identify probable header rows, worksheet names, date formats, numeric formats and GSTIN columns.
+
+Require user confirmation for ambiguous field mappings.
+
+Save approved mapping profiles for future monthly imports.
+
+For every imported record, preserve:
+
+- Original filename.
+- Worksheet name.
+- Source row number.
+- Original field values.
+- Import date and time.
+- Import batch number.
+- File checksum.
+- GSTIN.
+- Return period.
+- User responsible for import.
+
+Never overwrite or silently modify original accounting records.
+
+Prevent duplicate file imports and duplicate transaction reporting.
+
+Show source record counts, imported counts, rejected counts and financial control totals.
+
+## 9. Sales verification engine
+
+Develop complete invoice-level sales verification.
+
+Verify:
+
+- Supplier GSTIN.
+- Customer GSTIN.
+- Invoice number.
+- Invoice date.
+- Financial year.
+- Return period.
+- Invoice type.
+- Customer registration category.
+- Place of supply.
+- Interstate and intrastate classification.
+- HSN code.
+- Product description.
+- Quantity.
+- UQC.
+- Basic value.
+- Discount.
+- Taxable value.
+- GST rate.
+- IGST.
+- CGST.
+- SGST.
+- Cess.
+- Invoice total.
+- IRN.
+- Cancellation status.
+- Amendment status.
+- Duplicate invoices.
+- Invoice sequence gaps.
+
+Recalculate GST independently using applicable effective-date-based rules.
+
+Maintain original tax amounts and independently calculated tax amounts separately.
+
+Identify all differences and generate transaction-level exceptions.
+
+Never substitute a calculated value for the original accounting amount without an approved adjustment record.
+
+## 10. Cement manufacturing industry requirements
+
+Provide specialized processing for:
+
+- OPC cement.
+- PPC cement.
+- Clinker.
+- Other cement products.
+- Packing materials.
+- Scrap sales.
+- Factory-to-depot stock transfers.
+- Interstate branch transfers.
+- Distinct-person transactions.
+- Dealer incentives.
+- Freight incentives.
+- Quantity discounts.
+- Price differences.
+- Special discounts.
+- Commercial credit notes.
+- GST credit notes.
+- Capital goods.
+- Raw materials.
+- Coal and fuel purchases.
+- Gypsum and fly ash.
+- GTA and transporter payments.
+- Job work.
+- Imports.
+- Exports.
+- SEZ supplies.
+- ISD credit distribution.
+- Reverse charge transactions.
+
+The software must not assume that all cement products or transactions have the same GST rate.
+
+Use approved HSN classifications, applicable exemptions, transaction dates and effective-date-based government tax rules.
+
+## 11. Discount and credit note verification
+
+Develop a dedicated discount reconciliation module.
+
+Classify discounts into:
+
+- Invoice discounts.
+- Post-sale discounts.
+- Price difference.
+- Dealer incentives.
+- Freight incentives.
+- Quantity discounts.
+- Turnover discounts.
+- PPC special discounts.
+- Sales returns.
+- Commercial credit notes.
+- GST credit notes.
+- Debit notes.
+
+Verify supporting original invoices, credit notes, accounting entries, agreements and applicable statutory conditions.
+
+Prevent double deduction of discounts already included in the sales register.
+
+Do not automatically reduce output GST for commercial discounts or commercial credit notes.
+
+Where statutory treatment is uncertain, create a mandatory review exception for the authorized GST reviewer.
+
+Maintain separate accounting values and GST-adjustable values.
+
+## 12. Purchase verification engine
+
+Capture and verify all purchase invoices.
+
+Verify:
+
+- Supplier GSTIN.
+- Recipient GSTIN.
+- Invoice number.
+- Invoice date.
+- Document type.
+- Taxable value.
+- GST rate.
+- IGST.
+- CGST.
+- SGST.
+- Cess.
+- Invoice total.
+- Expense category.
+- Capital goods classification.
+- Reverse charge applicability.
+- Input tax credit eligibility.
+- Duplicate invoice status.
+- Previous claim history.
+
+Identify purchases reported under the wrong GSTIN and invoices already claimed in previous periods.
+
+Do not assume ITC eligibility merely because an invoice is present in GSTR-2B.
+
+## 13. GSTR-2B reconciliation engine
+
+Import the official GSTR-2B downloaded from the GST portal.
+
+GSTR-2B is a government-generated statement. Do not generate a fabricated replacement or describe a purchase-based calculation as official GSTR-2B.
+
+Match purchase register records against official GSTR-2B records using:
+
+- Recipient GSTIN.
+- Supplier GSTIN.
+- Invoice number.
+- Invoice date.
+- Document type.
+- Taxable value.
+- IGST.
+- CGST.
+- SGST.
+- Cess.
+- Applicable amendment references.
+
+Develop a multi-stage matching algorithm:
+
+Stage 1: Exact invoice matching.
+
+Stage 2: Normalized invoice-number matching.
+
+Stage 3: Amount and date comparison.
+
+Stage 4: Previous-period matching.
+
+Stage 5: Probable matching.
+
+Stage 6: Manual verification.
+
+Probable matches must never automatically be treated as confirmed matches.
+
+Classify reconciliation results as:
+
+- Fully matched.
+- Partially matched.
+- Missing in GSTR-2B.
+- Missing in purchase register.
+- Taxable value mismatch.
+- GST amount mismatch.
+- Invoice date mismatch.
+- Invoice number mismatch.
+- GSTIN mismatch.
+- Duplicate invoice.
+- Previous-period invoice.
+- Amended invoice.
+- ITC eligibility review.
+- Ineligible ITC.
+- Pending supplier correction.
+- Manually approved match.
+
+Maintain configurable matching tolerances without concealing the actual differences.
+
+## 14. Invoice Management System – IMS
+
+Provide a dedicated IMS review module.
+
+Support recommended acceptance, rejection and pending actions, wherever permitted under applicable GST rules.
+
+Track:
+
+- Supplier invoice.
+- Recommended IMS action.
+- Reason.
+- Reviewer approval.
+- Actual action performed on the portal.
+- Recomputed GSTR-2B.
+- Effect on ITC.
+
+Do not automatically perform GST portal actions from the offline application.
+
+Generate supported IMS files only after verification against the applicable official format.
+
+## 15. Input Tax Credit verification
+
+Develop a permanent ITC register.
+
+Maintain:
+
+- ITC available.
+- ITC eligible.
+- ITC ineligible.
+- Blocked ITC.
+- ITC pending verification.
+- ITC pending supplier reporting.
+- ITC reversals.
+- ITC reclaims.
+- Capital goods ITC.
+- Import of goods ITC.
+- Import of services ITC.
+- RCM-related ITC.
+- ISD credits.
+- Previous-period ITC.
+- Time-limit-related restrictions.
+- Payment-related eligibility conditions.
+
+Prevent duplicate ITC claims across multiple months and GSTINs.
+
+Record the original invoice, claim period, reversal period, reclaim period, supporting evidence and applicable legal basis.
+
+Require human review for eligibility conditions that cannot be established from the provided documents.
+
+## 16. Reverse charge verification
+
+Develop a separate RCM module.
+
+Verify:
+
+- Supplier category.
+- Nature of goods or services.
+- Applicable reverse charge rules.
+- Taxable value.
+- Applicable GST rate.
+- GST liability.
+- Payment status.
+- ITC eligibility.
+- Claim period.
+
+Support GTA, transport charges, legal services, imports of services and other notified reverse charge categories where applicable.
+
+Do not automatically classify every transport expense as subject to RCM.
+
+Reverse charge liability and subsequent eligible ITC must be tracked separately.
+
+## 17. GSTR-1 preparation engine
+
+Prepare GSTIN-wise GSTR-1 using verified accounting transactions.
+
+Support all applicable official tables, including:
+
+- Table 4: Applicable B2B supplies.
+- Table 5: B2C large supplies.
+- Table 6: Exports, SEZ and deemed exports.
+- Table 7: Other B2C supplies.
+- Table 8: Nil-rated, exempted and non-GST supplies.
+- Table 9: Credit notes, debit notes and amendments.
+- Table 10: B2C amendments.
+- Table 11: Applicable advances and adjustments.
+- Table 12: HSN-wise summary.
+- Table 13: Documents issued.
+- Tables 14 and 15 and corresponding amendments, wherever applicable.
+
+Maintain separate HSN summaries for B2B and B2C wherever required.
+
+Use official thresholds, classifications, code lists and table definitions applicable to the selected return period.
+
+Support cancellations, amendments and previous-period adjustments.
+
+Reconcile independently prepared GSTR-1 with:
+
+- Sales register.
+- Discount register.
+- Credit/debit note register.
+- E-invoice data.
+- Portal-generated GSTR-1 draft.
+
+Every GSTR-1 summary figure must support invoice-level drill-down.
+
+## 18. GSTR-1A amendment engine
+
+Provide a separate module for eligible GSTR-1A corrections.
+
+Maintain:
+
+- Original GSTR-1 record.
+- Amendment reason.
+- Revised record.
+- Difference in taxable value.
+- Difference in GST liability.
+- Reviewer approval.
+- Return period.
+- Portal filing status.
+- Effect on GSTR-3B.
+
+Apply the applicable government rules governing the availability, scope and timing of GSTR-1A.
+
+Do not allow duplicate reporting of amended transactions.
+
+## 19. GSTR-3B preparation engine
+
+Prepare the complete GSTR-3B return from verified outward supplies, eligible ITC, reverse charge and other applicable adjustments.
+
+Support every applicable government table, including:
+
+- Table 3.1(a): Taxable outward supplies.
+- Table 3.1(b): Zero-rated outward supplies.
+- Table 3.1(c): Nil-rated and exempted outward supplies.
+- Table 3.1(d): Inward supplies liable to reverse charge.
+- Table 3.1(e): Non-GST outward supplies.
+- Table 3.1.1: Applicable Section 9(5) supplies.
+- Table 3.2: Specified interstate supplies.
+- Table 4(A): ITC available.
+- Table 4(B): ITC reversals.
+- Table 4(C): Net ITC available.
+- Table 4(D): Other ITC details.
+- Table 5: Exempt, nil-rated and non-GST inward supplies.
+- Table 5.1: Interest and late fees.
+- Table 6.1: Payment of tax.
+
+Calculate IGST, CGST, SGST and Cess separately.
+
+Apply applicable tax utilization and set-off rules.
+
+Calculate cash payment requirements using verified ledger balances.
+
+Respect applicable restrictions on ITC utilization, RCM payments and other cash-only liabilities.
+
+Compare independently prepared values with the GST portal system-generated GSTR-3B summary.
+
+Do not assume that every portal field is editable. Where portal restrictions exist, identify the appropriate source correction or authorized review procedure.
+
+## 20. Mandatory cross-verification engine
+
+Develop an independent audit system covering the following comparisons:
+
+| Audit | Verification |
+|---|---|
+| AUD-001 | Sales register vs independently calculated tax |
+| AUD-002 | Sales register vs GSTR-1 |
+| AUD-003 | E-invoice data vs sales register |
+| AUD-004 | Discount register vs credit notes |
+| AUD-005 | Credit notes vs original invoices |
+| AUD-006 | Purchase register vs GSTR-2B |
+| AUD-007 | Purchase register vs ITC register |
+| AUD-008 | GSTR-2B vs GSTR-3B |
+| AUD-009 | GSTR-1/1A vs GSTR-3B |
+| AUD-010 | Stock transfers vs branch receipts |
+| AUD-011 | RCM register vs GSTR-3B |
+| AUD-012 | Historical returns vs current adjustments |
+| AUD-013 | ITC reversals vs reclaims |
+| AUD-014 | GST ledgers vs tax payment |
+| AUD-015 | HSN summary vs sales details |
+| AUD-016 | Documents issued vs invoice series |
+| AUD-017 | Final Excel vs approved database |
+| AUD-018 | JSON export vs approved return |
+| AUD-019 | GST portal processed data vs approved return |
+| AUD-020 | GSTIN-wise and consolidated control totals |
+
+The audit engine must not merely compare two reports generated from the same calculation. Perform independent transaction checks and external-source reconciliation wherever supporting records are available.
+
+## 21. Difference and exception management
+
+Create a permanent exception register.
+
+Every exception must contain:
+
+- Exception ID.
+- GSTIN.
+- Financial year.
+- Return period.
+- Audit category.
+- Severity.
+- Invoice number.
+- Invoice date.
+- Customer or supplier name.
+- Source filename.
+- Worksheet name.
+- Source row number.
+- Original value.
+- Expected value.
+- Actual difference.
+- Reason.
+- Supporting evidence.
+- Corrective action.
+- Assigned user.
+- Reviewer.
+- Approval date.
+- Current status.
+
+Use severity classifications:
+
+- Critical.
+- High.
+- Medium.
+- Low.
+- Information.
+
+Use processing statuses:
+
+- Open.
+- Under review.
+- Awaiting clarification.
+- Awaiting supplier correction.
+- Correction proposed.
+- Corrected.
+- Approved explanation.
+- Resolved.
+
+Critical unresolved errors must block final approved export.
+
+Allow genuine reconciliation or timing differences only through documented, authorized review.
+
+Never conceal differences merely to make reconciliation totals equal.
+
+## 22. Government format integration
+
+This is a mandatory and non-negotiable requirement.
+
+Do not invent custom return templates and label them as official government formats.
+
+Obtain the applicable official GST templates and utilities from:
+
+https://www.gst.gov.in/download/returns
+
+Create a Government Template Manager that maintains:
+
+- Template name.
+- Return type.
+- Official source URL.
+- Version.
+- Applicable return period.
+- Download date.
+- File checksum.
+- Worksheet names.
+- Column names.
+- Mandatory fields.
+- Date formats.
+- Numeric precision.
+- Official code lists.
+- Validation rules.
+- JSON schema.
+- Approval status.
+
+Preserve the government workbook structure exactly.
+
+Do not insert internal audit columns into government upload files.
+
+If an official workbook contains macros or protected structures, preserve them using a verified compatible method. Do not assume ordinary Excel libraries can safely modify every official utility.
+
+### Government export requirements
+
+Generate:
+
+1. GSTR-1 official Excel template.
+2. GSTR-1 supported and validated JSON.
+3. GSTR-1A supported amendment data.
+4. GSTR-3B government-format Excel worksheet or official utility-compatible data.
+5. GSTR-3B JSON only where the applicable official utility and portal support it.
+6. IMS-supported output wherever applicable.
+
+Verify every generated output against the actual official utility and applicable portal validation.
+
+If an official template or schema is unavailable, mark that export function as pending official verification.
+
+Do not fabricate a schema or claim that a file is government-approved without successful testing.
+
+## 23. GST rules update manager
+
+Do not permanently hardcode GST statutory rules.
+
+Maintain version-controlled rules with effective dates.
+
+The rules engine must support:
+
+- Tax rates.
+- HSN and SAC codes.
+- Exemptions.
+- Place-of-supply rules.
+- B2B and B2C classification.
+- B2C reporting thresholds.
+- Credit and debit note treatment.
+- ITC eligibility.
+- Blocked ITC.
+- RCM applicability.
+- Return table mapping.
+- GSTIN validation.
+- Amendment restrictions.
+- Tax utilization.
+- Official return validation.
+- Applicable portal restrictions.
+
+Every statutory rule must have its source, effective date, version and approval history.
+
+Use official GST portal resources, CBIC notifications, circulars and applicable legislation.
+
+Do not use AI-generated assumptions as statutory authority.
+
+Support offline rule-update packages with integrity and authenticity verification.
+
+Preserve historical rule versions so that previous returns remain reproducible.
+
+## 24. Permanent database design
+
+Create a normalized SQLite database with appropriate primary keys, foreign keys, indexes, constraints and transaction handling.
+
+Required database tables include:
+
+- companies
+- gst_registrations
+- branches
+- customers
+- suppliers
+- products
+- hsn_master
+- tax_rates
+- gst_rules
+- users
+- user_roles
+- import_batches
+- import_mapping_profiles
+- source_records
+- sales_invoices
+- sales_items
+- purchase_invoices
+- purchase_items
+- discounts
+- credit_debit_notes
+- stock_transfers
+- einvoice_records
+- gstr2b_records
+- ims_actions
+- itc_register
+- itc_reversals
+- itc_reclaims
+- rcm_register
+- gst_ledgers
+- reconciliation_results
+- audit_exceptions
+- exception_evidence
+- return_periods
+- return_versions
+- gstr1_returns
+- gstr1a_returns
+- gstr3b_returns
+- government_templates
+- government_field_mappings
+- approval_history
+- export_history
+- filing_history
+- backup_history
+- audit_logs
+- application_settings
+- schema_migrations
+
+Enable foreign key enforcement and safe database transactions.
+
+Use appropriate composite transaction keys to prevent duplicate records without incorrectly rejecting valid multi-line invoices.
+
+Store financial amounts using integer paise or exact decimal representations.
+
+Provide database migration scripts for future schema changes.
+
+Generate a complete Database_Schema.sql file and entity relationship documentation.
+
+## 25. Final reports and Excel outputs
+
+Generate GSTIN-wise, month-wise and financial-year-wise reports.
+
+Required output files:
+
+1. GSTR1_Official_Excel
+2. GSTR1_Validated_JSON
+3. GSTR1A_Amendment_Report.xlsx
+4. GSTR3B_Official_Format.xlsx or applicable official format
+5. GSTR3B_JSON, where supported
+6. GSTR2B_Reconciliation.xlsx
+7. Sales_Verification.xlsx
+8. Discount_Verification.xlsx
+9. Purchase_Verification.xlsx
+10. Missing_Invoices.xlsx
+11. Duplicate_Invoices.xlsx
+12. GST_Rate_Mismatch.xlsx
+13. Taxable_Value_Mismatch.xlsx
+14. ITC_Eligibility.xlsx
+15. ITC_Reversal_Reclaim.xlsx
+16. RCM_Verification.xlsx
+17. Stock_Transfer_Reconciliation.xlsx
+18. GSTR1_vs_GSTR3B.xlsx
+19. GSTR2B_vs_GSTR3B.xlsx
+20. GSTIN_Wise_Tax_Summary.xlsx
+21. Consolidated_Management_Report.xlsx
+22. Audit_Exception_Register.xlsx
+23. Final_Audit_Approval.pdf
+24. Filing_History.xlsx
+25. Annual_GST_Reconciliation.xlsx
+
+Internal Excel reports must include professional formatting, filters, frozen headings, Indian currency formatting, appropriate totals and clear discrepancy highlighting.
+
+Use drill-down references and source information wherever applicable.
+
+Separate government export files from internal reports.
+
+## 26. User management and approval workflow
+
+Create the following user roles:
+
+- Administrator.
+- Data Entry Operator.
+- Accounts Executive.
+- GST Reviewer.
+- Approving Officer.
+- Auditor.
+- Read-only User.
+
+Implement a maker-checker approval process.
+
+Workflow:
+
+Data Import → Initial Validation → Return Preparation → Reconciliation → Exception Resolution → Reviewer Approval → Final Approval → Government Export → Authorized Portal Filing → Return Locking.
+
+The maker must not approve their own work where independent approval is configured.
+
+Maintain user-level access restrictions by company and GSTIN.
+
+Log every important activity with user identification, timestamp and before/after values.
+
+Approved returns must be versioned. Any subsequent change must invalidate the affected approval and require reapproval.
+
+Do not store GST portal passwords, OTPs or digital signature PINs.
+
+## 27. Data security
+
+Ensure:
+
+- Offline operation.
+- No unauthorized external data transmission.
+- No mandatory telemetry.
+- Secure password hashing.
+- Role-based access.
+- Protected database directories.
+- Original file integrity checks.
+- Audit logging.
+- Return locking.
+- Session timeout.
+- Controlled data exports.
+- Secure backups.
+- Protection against malicious Excel formulas and unsafe file imports.
+- Protection against unauthorized update packages.
+
+Do not describe ordinary SQLite as encrypted by default. Use approved encrypted storage or an appropriately licensed encryption solution where required.
+
+## 28. Backup, restoration and computer migration
+
+Develop a complete backup and restoration system.
+
+The application must support:
+
+- Automatic local backups.
+- Manual backups.
+- Scheduled backups while the application or authorized background service is running.
+- Backup before software upgrades.
+- Backup before return locking.
+- Encrypted backup packages.
+- Database integrity verification.
+- Backup history.
+- Restore preview.
+- Restore confirmation.
+- Complete computer migration.
+
+A complete backup must include:
+
+- SQLite database.
+- Imported original files.
+- Historical return files.
+- Government templates.
+- GST rules.
+- Company configuration.
+- User configuration.
+- Audit logs.
+- Supporting evidence.
+
+Use SQLite's supported consistent backup mechanisms rather than copying an actively changing database file without coordination.
+
+Provide a migration wizard to restore the entire application data on another compatible Windows computer.
+
+## 29. Project folder structure
+
+Create a modular project using the following structure:
+
+```text
+PCIL_GST_COMPLIANCE/
+├── main.py
+├── requirements.txt
+├── requirements-dev.txt
+├── README.md
+├── config/
+├── ui/
+├── controllers/
+├── services/
+├── models/
+├── database/
+│   ├── schema.sql
+│   └── migrations/
+├── modules/
+│   ├── masters/
+│   ├── data_import/
+│   ├── sales/
+│   ├── discounts/
+│   ├── purchases/
+│   ├── einvoices/
+│   ├── gstr1/
+│   ├── gstr1a/
+│   ├── gstr2b/
+│   ├── ims/
+│   ├── gstr3b/
+│   ├── itc/
+│   ├── rcm/
+│   ├── stock_transfers/
+│   ├── gst_rules/
+│   ├── reconciliation/
+│   ├── audit/
+│   ├── government_export/
+│   ├── reports/
+│   ├── approvals/
+│   ├── security/
+│   └── backup/
+├── government_templates/
+├── gst_rules/
+├── assets/
+├── tests/
+├── sample_data/
+├── documentation/
+├── packaging/
+│   ├── PCIL_GST.spec
+│   └── PCIL_GST_Setup.iss
+└── build_scripts/
+```
+
+Keep production company data outside the source code and executable directories.
+
+## 30. Monthly operating procedure
+
+The completed software should allow an accounts employee to perform the following operations:
+
+1. Open the application.
+2. Select financial year.
+3. Select return month and GSTIN.
+4. Import sales register.
+5. Import discount register.
+6. Import purchase register.
+7. Import official GSTR-2B.
+8. Import applicable supporting records.
+9. Run complete verification.
+10. Review all identified differences.
+11. Prepare independent GSTR-1.
+12. Generate validated GSTR-1 government files.
+13. Verify and file GSTR-1 through the authorized portal process.
+14. Import the processed or filed GSTR-1.
+15. Process GSTR-1A adjustments wherever applicable.
+16. Verify eligible ITC.
+17. Verify reverse charge.
+18. Prepare independent GSTR-3B.
+19. Compare with government-generated summaries.
+20. Resolve critical differences.
+21. Obtain reviewer approval.
+22. Generate final government-format files.
+23. Verify portal figures and tax payment.
+24. Complete authorized filing.
+25. Import filed return and ARN.
+26. Lock and archive the return period.
+27. Create a complete backup.
+
+## 31. Development roadmap
+
+Develop the software in controlled, independently testable phases.
+
+### Phase 1 – Foundation
+
+Create the desktop application framework, database, company master, GSTIN master, login and navigation.
+
+### Phase 2 – Data import
+
+Develop file import, column mapping, validation, original data preservation and control totals.
+
+### Phase 3 – Sales and discounts
+
+Develop sales verification, discount classification, credit notes, debit notes, e-invoice reconciliation and stock transfers.
+
+### Phase 4 – GSTR-1
+
+Develop official GSTR-1 table preparation, HSN summaries, document summaries and government export integration.
+
+### Phase 5 – Purchase reconciliation
+
+Develop purchase verification, GSTR-2B matching and IMS review.
+
+### Phase 6 – ITC and RCM
+
+Develop ITC eligibility, reversal, reclaim and reverse charge engines.
+
+### Phase 7 – GSTR-3B
+
+Develop liability calculation, ITC mapping, tax utilization, cash payment estimation and official format generation.
+
+### Phase 8 – Complete auditing
+
+Develop independent cross-verification, exception management, approval controls and management reports.
+
+### Phase 9 – Government compatibility
+
+Validate actual official Excel formats, supported JSON schemas and government utility compatibility.
+
+### Phase 10 – Security and database management
+
+Develop backup, restore, migration, user access restrictions and authenticated updates.
+
+### Phase 11 – Windows deployment
+
+Package the application, build the installer and portable edition, and test clean installations without Python or SQLite separately installed.
+
+### Phase 12 – Production acceptance
+
+Test multiple GSTINs, historical months, large transaction volumes and official portal compatibility with authorized company personnel.
+
+At the end of each phase, provide working source code, test results, documentation and a list of unresolved requirements.
+
+## 32. Testing and quality assurance
+
+Create automated unit tests, integration tests, database tests, reconciliation tests, government export tests and installation tests.
+
+Mandatory test scenarios include:
+
+- Duplicate sales invoices.
+- Duplicate purchase invoices.
+- Multiple line items under one invoice.
+- Incorrect GSTIN.
+- Incorrect GST rate.
+- Incorrect tax classification.
+- Wrong place of supply.
+- Rate changes between periods.
+- Missing purchase invoices.
+- Duplicate ITC claims.
+- Previous-period invoices.
+- Commercial credit notes.
+- GST credit notes.
+- Cancelled invoices.
+- Interstate stock transfers.
+- RCM transactions.
+- ITC reversals and reclaims.
+- Multiple GSTINs.
+- Previous financial-year adjustments.
+- Nil return periods.
+- Negative adjustment values.
+- Decimal rounding.
+- Government template changes.
+- Invalid JSON.
+- Database corruption recovery.
+- Backup and restoration.
+- Software upgrades.
+- Installation on clean Windows computers.
+
+Use synthetic data only for initial development and clearly label it as test data.
+
+Do not include fabricated figures in actual company returns.
+
+## 33. Production acceptance criteria
+
+The software must not be represented as production-ready until:
+
+- All imported source records are accounted for.
+- All GSTINs are correctly segregated.
+- Financial control totals are reconciled.
+- Critical discrepancies are resolved.
+- Duplicate reporting is prevented.
+- Duplicate ITC claims are prevented.
+- Official template validation is successful.
+- Applicable JSON validation is successful.
+- Actual authorized GST portal upload testing is successful.
+- Approved return totals agree with portal-processed data.
+- Backup and restoration are successfully tested.
+- Clean Windows installation is successfully tested.
+- All critical automated tests pass.
+- Historical returns are independently reconciled.
+- Company GST professionals approve statutory calculations and classifications.
+
+The final legal responsibility and authentication of GST returns remain with the authorized company officer.
+
+## 34. Final software deliverables
+
+Provide the complete project package containing:
+
+- PCIL_GST_Setup.exe
+- PCIL_GST_Portable.zip
+- Developer_Source_Code.zip
+- Database_Schema.sql
+- Database_ER_Diagram.pdf
+- requirements.txt
+- Installation_Guide.pdf
+- User_Operating_Manual.pdf
+- Technical_Documentation.pdf
+- GST_Field_Mapping.xlsx
+- Government_Template_Register.xlsx
+- GST_Rules_Register.xlsx
+- Sample_Test_Data
+- Automated_Test_Suite
+- Testing_Checklist.xlsx
+- Backup_and_Restore_Guide.pdf
+- Software_Update_Guide.pdf
+- Windows_Build_Instructions
+- Third-party licence notices
+- Release_Notes.pdf
+- Production_Readiness_Report.pdf
+
+All source code must be editable and transferable to another developer.
+
+Avoid unnecessary vendor dependency and mandatory paid services.
+
+## 35. Instructions to the AI developer
+
+Do not provide only a theoretical explanation.
+
+Do not stop after creating the dashboard.
+
+Do not use placeholder buttons, mock calculations or simulated reconciliation as completed production features.
+
+Do not invent official GST templates, field mappings, JSON schemas or statutory rules.
+
+Do not hardcode GSTINs, state registrations, accounting column names, tax rates or financial years.
+
+Do not silently correct source accounting data.
+
+Do not automatically approve probable invoice matches.
+
+Do not generate approved government export files when critical errors remain unresolved.
+
+Do not make internet-dependent services mandatory.
+
+If actual accounting registers are not yet available, develop configurable import interfaces and clearly labelled test fixtures. Request actual register samples only when required to finalize company-specific mappings.
+
+Build the application systematically, module by module.
+
+Maintain a development progress register with:
+
+- Completed modules.
+- Pending modules.
+- Working functions.
+- Test results.
+- Known limitations.
+- Dependencies.
+- Official validation status.
+- Next implementation steps.
+
+After implementing each module, test it before integrating it into the next module.
+
+Where Windows installer generation cannot be performed in the current development environment, provide reproducible Windows build scripts and clearly identify the installer as not yet built or tested.
+
+## 36. Final objective
+
+Deliver a professional, self-contained, permanent offline GST compliance application that enables Parasakti Cement Industries Limited to:
+
+**Upload → Verify → Reconcile → Prepare → Audit → Approve → Export → File → Archive**
+
+The software must independently prepare and carefully verify GST returns for multiple GST registrations using company sales, discount and purchase registers together with official GST portal records.
+
+It must produce properly validated government-compatible GSTR-1 and GSTR-3B outputs, complete GSTR-2B reconciliation and detailed supporting audit reports.
+
+The finished application should install and operate like ordinary Windows desktop software without requiring employees to separately install Python, SQLite or programming libraries.
+
+**Start development with Phase 1 and proceed through the complete implementation roadmap.**
